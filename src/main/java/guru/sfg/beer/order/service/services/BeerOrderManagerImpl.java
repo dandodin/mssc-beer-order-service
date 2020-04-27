@@ -42,6 +42,10 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
         BeerOrder beerOrder = beerOrderRepository.getOne(orderId);
         if (isValid) {
             sendEvent(beerOrder, BeerOrderEventEnum.VALIDATION_PASSED);
+
+            // The object becomes stale because of Hibernate.  Must reload.
+            BeerOrder validatedBeerOrder = beerOrderRepository.getOne(orderId);
+            sendEvent(validatedBeerOrder, BeerOrderEventEnum.ALLOCATE_ORDER);
         } else {
             sendEvent(beerOrder, BeerOrderEventEnum.VALIDATION_FAILED);
         }
