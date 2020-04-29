@@ -7,6 +7,10 @@ import java.util.UUID;
 
 public interface BeerOrderManager {
     BeerOrder newBeerOrder(BeerOrder beerOrder);
-    void processValidationResult(UUID orderId, boolean isValid);
-    void processAllocationResult(BeerOrderDto beerOrderDto, boolean allocationError, boolean pendingInventory);
+    void processValidationResult(UUID beerOrderId, Boolean isValid);
+    void beerOrderAllocationPassed(BeerOrderDto beerOrder);
+    void beerOrderAllocationPendingInventory(BeerOrderDto beerOrder);
+    void beerOrderAllocationFailed(BeerOrderDto beerOrder);
+    void beerOrderPickedUp(UUID id);
+    void cancelOrder(UUID id);
 }

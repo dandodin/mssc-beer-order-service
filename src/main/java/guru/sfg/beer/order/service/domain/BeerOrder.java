@@ -48,7 +48,7 @@ public class BeerOrder extends BaseEntity {
         this.customerRef = customerRef;
         this.customer = customer;
         this.beerOrderLines = beerOrderLines;
-        this.beerOrderStatus = beerOrderStatus;
+        this.orderStatus = orderStatus;
         this.orderStatusCallbackUrl = orderStatusCallbackUrl;
     }
 
@@ -61,6 +61,6 @@ public class BeerOrder extends BaseEntity {
     @Fetch(FetchMode.JOIN)
     private Set<BeerOrderLine> beerOrderLines;
 
-    private BeerOrderStatusEnum beerOrderStatus = BeerOrderStatusEnum.NEW;
+    private BeerOrderStatusEnum orderStatus = BeerOrderStatusEnum.NEW;
     private String orderStatusCallbackUrl;
 }
