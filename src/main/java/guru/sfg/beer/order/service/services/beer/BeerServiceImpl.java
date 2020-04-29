@@ -15,8 +15,8 @@ import java.util.UUID;
 @Component
 public class BeerServiceImpl implements BeerService {
 
-    public static final String BEER_BY_ID_PATH_V1 = "/api/v1/beer/";
-    public static final String BEER_BY_UPC_PATH_V1 = "/api/v1/beerUpc/";
+    public static final String BEER_PATH_V1 = "/api/v1/beer/";
+    public static final String BEER_UPC_PATH_V1 = "/api/v1/beerUpc/";
     private final RestTemplate restTemplate;
 
     private String beerServiceHost;
@@ -33,7 +33,7 @@ public class BeerServiceImpl implements BeerService {
     public Optional<BeerDto> getBeerById(UUID beerId) {
         return Optional.of(
             restTemplate.getForObject(
-                beerServiceHost + BEER_BY_ID_PATH_V1 + beerId.toString(),
+                beerServiceHost + BEER_PATH_V1 + beerId.toString(),
                 BeerDto.class)
         );
     }
@@ -42,7 +42,7 @@ public class BeerServiceImpl implements BeerService {
     public Optional<BeerDto> getBeerByUpc(String upc) {
         return Optional.of(
             restTemplate.getForObject(
-                beerServiceHost + BEER_BY_UPC_PATH_V1 + upc,
+                beerServiceHost + BEER_UPC_PATH_V1 + upc,
                 BeerDto.class)
         );
     }
